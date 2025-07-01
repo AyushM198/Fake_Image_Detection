@@ -60,7 +60,7 @@ const Login = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-black">
       <div className="bg-gray-900 p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h1 className="text-2xl font-bold text-purple-400 text-center mb-6">
+        <h1 className="text-2xl font-bold  text-purple-400 text-center mb-6">
           Welcome Back
         </h1>
         <p className="text-gray-400 text-center mb-6">
@@ -103,7 +103,7 @@ const Login = () => {
           {/* Submit Button */}
           <button
   type="submit"
-  className="w-full py-2 rounded-lg text-white bg-purple-600"
+  className="w-full py-2 rounded-lg text-white bg-gradient-to-r  to-purple-600  hover:from-purple-600 hover:to-black"
 >
   Login
 </button>

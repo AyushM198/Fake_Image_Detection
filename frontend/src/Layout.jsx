@@ -1,23 +1,20 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-
-
-import Header from './components/Header'
-import Footer from './components/Footer'
+import React, { useRef } from 'react';
+import { Outlet } from 'react-router-dom';
+import Header from './components/Header';
 
 
 const Layout = () => {
+  const heroRef = useRef(null);
+
   return (
-    <div>
-      <Header />
+    <>
       
-      <Outlet />
-      
-      <Footer />
+      <Header heroRef={heroRef} />
+      <main className="mt-[90px]">
+        <Outlet context={{ heroRef }} />
+      </main>
+    </>
+  );
+};
 
-
-    </div>
-  )
-}
-
-export default Layout
+export default Layout;

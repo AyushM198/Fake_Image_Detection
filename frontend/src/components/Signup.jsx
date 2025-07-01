@@ -66,8 +66,8 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900">
-      <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+    <div className="flex items-center justify-center min-h-screen bg-black">
+      <div className="bg-gray-900 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h1 className="text-2xl font-bold text-white text-center mb-6">
           Create an Account
         </h1>
@@ -152,7 +152,7 @@ const SignupPage = () => {
           <button
             type="submit"
             onClick={handleSubmit}
-            className="w-full py-2 rounded-lg text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 transition-colors duration-300"
+            className="w-full py-2 rounded-lg text-white bg-gradient-to-r  to-purple-600  hover:from-purple-600 hover:to-black transition-colors duration-200"
           >
             Sign Up
           </button>
@@ -160,7 +160,7 @@ const SignupPage = () => {
 
         <p className="text-sm text-gray-400 text-center mt-4">
           Already have an account? {" "}
-          <a href="#" className="text-blue-400 font-medium hover:underline">
+          <a href="/login" className="text-blue-400 font-medium hover:underline">
             Login here
           </a>
         </p>

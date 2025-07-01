@@ -1,16 +1,23 @@
-import React from 'react';
-import { FaQuoteLeft } from 'react-icons/fa';
+
+
+
+import React, { useEffect, useRef } from 'react';
+import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import { Autoplay } from 'swiper/modules';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import DecryptedText from './ui/Decrypt';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   { text: "TamperDetect saved our company from a major fraud case. The AI detection is incredibly accurate!", author: "Rajesh Sharma", color: "text-purple-400" },
   { text: "I use this tool daily for verifying contracts. It's fast and reliable.", author: "Priya Mehta", color: "text-blue-400" },
   { text: "A must-have for digital security! It detects even the slightest tampering.", author: "Anil Verma", color: "text-green-400" },
   { text: "Highly efficient fraud detection system. Helped secure our business!", author: "Neha Joshi", color: "text-red-400" },
-  { text: "Seamless integration and great accuracy!", author: "Amit Kumar", color: "text-yellow-400" },
   { text: "This tool gave me peace of mind for document authentication.", author: "Sanya Kapoor", color: "text-pink-400" },
   { text: "A game-changer for fraud prevention in the legal sector.", author: "Rahul Nair", color: "text-indigo-400" },
   { text: "Customer support is fantastic, and the AI is top-notch!", author: "Megha Sinha", color: "text-cyan-400" },
@@ -34,33 +41,93 @@ const testimonials = [
   { text: "TamperDetect helps us maintain document integrity.", author: "Swati Sharma", color: "text-purple-600" },
   { text: "An indispensable tool for cybersecurity professionals.", author: "Abhinav Joshi", color: "text-green-600" },
   { text: "Very user-friendly and efficient fraud detection software.", author: "Meera Chauhan", color: "text-red-600" },
-  { text: "The AI capabilities of TamperDetect are truly impressive.", author: "Gaurav Malhotra", color: "text-yellow-600" },
+
   { text: "It detected tampered signatures instantly!", author: "Neeta Agarwal", color: "text-pink-600" },
   { text: "Perfect for businesses handling sensitive contracts.", author: "Amit Trivedi", color: "text-indigo-600" },
   { text: "TamperDetect gives us peace of mind in document verification.", author: "Sonia Rajan", color: "text-cyan-600" },
   { text: "We reduced fraudulent transactions significantly using this tool.", author: "Vivek Iyer", color: "text-teal-600" },
   { text: "I use this tool to verify important legal papers.", author: "Suhani Deshpande", color: "text-orange-600" },
-  { text: "TamperDetect has enhanced our security measures.", author: "Arvind Kashyap", color: "text-lime-600" },
+  { text: "TamperDetect has enhanced our security measures.", author: "Arvind Kashyap", color: "text-lime-500" },
   { text: "Great for organizations looking for top-notch security solutions.", author: "Tanya Bhatt", color: "text-emerald-600" },
-  { text: "Excellent tool for ensuring data authenticity.", author: "Yashwant Rao", color: "text-blue-700" },
+  { text: "Excellent tool for ensuring data authenticity.", author: "Yashwant Rao", color: "text-blue-500" },
   { text: "Highly reliable fraud detection software.", author: "Kiran Joshi", color: "text-purple-700" },
   { text: "Great for forensic investigations.", author: "Sakshi Verma", color: "text-green-700" },
-  { text: "A life-saver for preventing document fraud.", author: "Naveen Choudhary", color: "text-red-700" },
-  { text: "TamperDetect makes fraud detection effortless.", author: "Pooja Ghosh", color: "text-yellow-700" },
+  { text: "A life-saver for preventing document fraud.", author: "Naveen Choudhary", color: "text-red-500" },
+
 ];
-
-
-
 const Testimonials = () => {
+  const headingRef = useRef(null);
+const paragraphRef = useRef(null);
+
+ScrollTrigger.create({
+  trigger: headingRef.current,
+  start: 'center center',
+  onEnter: () => headingTextRef.current?.startDecryption(),
+  once: true,
+});
+
+
+useEffect(() => {
+  const animateChars = (ref) => {
+    if (!ref.current) return;
+    const chars = ref.current.querySelectorAll('span');
+    gsap.fromTo(
+      chars,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.05,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: ref.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+  };
+
+  animateChars(headingRef);
+  animateChars(paragraphRef);
+}, []);
+
   return (
     <section id="testimonials" className="py-16 bg-black w-full">
-      <div className=" mx-auto">
-        <h2 className="text-4xl font-bold text-white text-center mb-10">
-          What Our Users Say
-        </h2>
-        <p className="text-center text-gray-400 mb-12">
-          Trusted by professionals and businesses for fraud detection & security.
-        </p>
+      <div className="max-w-8xl mx-auto">
+
+        <div className="w-full bg-black text-white pb-35 pt-15">
+          <div className="max-w-6xl mx-auto">
+            {/* <h2 className="text-5xl text-[#f5f5f5] font-bold mb-4 text-left">
+              What Our Users Say
+          </h2> */}
+            <h2
+              ref={headingRef}
+              className="text-5xl text-purple-400 font-bold mb-4 text-left"
+            >
+              <DecryptedText
+                text="What Our Users Say"
+                animateOn="view"
+                revealDirection="start"
+                sequential
+                className="text-5xl font-bold text-white"
+                parentClassName="mb-4"
+              />
+            </h2>
+
+            <p ref={paragraphRef} className="text-2xl text-purple-400 text-left mt-6">
+              <DecryptedText
+                text="Trusted by professionals and businesses for fraud detection & security."
+                animateOn="view"
+                revealDirection="start"
+                sequential
+                className="text-lg text-gray-300"
+                parentClassName="mb-8"
+              />
+            </p>
+          </div>
+        </div>
 
         <Swiper
           slidesPerView={3}
@@ -74,9 +141,17 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index} className="flex-shrink-0">
               <div className="p-8 bg-gray-900 text-white rounded-lg shadow-lg flex flex-col items-center justify-center h-64">
-                <FaQuoteLeft className={`${testimonial.color} text-4xl mb-4`} />
-                <p className="italic text-center">"{testimonial.text}"</p>
-                <h4 className={`mt-4 font-semibold ${testimonial.color}`}>- {testimonial.author}</h4>
+                <div className="flex items-start gap-2 text-xl mb-4">
+                  <FaQuoteLeft className="text-lg text-purple-400" />
+                  <p className="italic text-white text-lg leading-relaxed">
+                    {testimonial.text}
+                  </p>
+                  <FaQuoteRight className="text-lg text-purple-400" />
+                </div>
+
+                <h4 className="mt-4 font-semibold text-gray-400">
+                  – {testimonial.author}
+                </h4>
               </div>
             </SwiperSlide>
           ))}

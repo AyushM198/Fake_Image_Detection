@@ -18,6 +18,7 @@ import Uploadingimage from './components/Uploadimage.jsx'
 import PaymentPage from './components/Payment.jsx'
 import Carousel from './components/Extra.jsx'
 import PrivacyPolicy from './components/Privacy&privacy.jsx'
+import ParallaxSections from './components/ParalaxSection.jsx'
 
 
 // createRoot(document.getElementById('root')).render(
@@ -33,7 +34,7 @@ import PrivacyPolicy from './components/Privacy&privacy.jsx'
 //     <Route path='/' element={<LandingPage />}/>
 //     <Route path='/About' element={<AboutUs />}/>
 //      </Route>
-       
+
 //     <Route path='/login' element={<LoginPage />}/>
 //     <Route path='/signup' element={<SignupPage />}/>
 
@@ -44,51 +45,38 @@ import PrivacyPolicy from './components/Privacy&privacy.jsx'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-     <Route path='/' element={<Layout />}>
-       
+      <Route path='/' element={<Layout />}>
+
         <Route index element={
           <>
             <LandingPage />
+            {/* <ParallaxSections /> */}
             <Testimonials />
-            <HomePage/>
-            <Carousel/>
-          
-            
-           
-        
-           
-            
-
-
+            <HomePage />
+            <Carousel />
           </>
-          
-        } />
-        <Route path='/About' element={<AboutUs />}/>
-        <Route path='/Pricing' element={<PricingPlans />}/>
-        <Route path='/singleimagepricing' element={<SingleImagePricing/>}/>
-        <Route path='/uploadingimage' element={<Uploadingimage/>}/>
-        <Route path='/singledocument' element={<SingleDocumentPricing/>}/>
-        <Route path='/homepage' element={<HomePage/>}/>
-        <Route path='/Payment' element={<PaymentPage/>}/>
-        <Route path='/Privacy' element={<PrivacyPolicy/>}/>
-        
-        
-        
-        
-        
-        
 
-        
+        } />
+        <Route path='/About' element={<AboutUs />} />
+        <Route path='/Pricing' element={<PricingPlans />} />
+        <Route path='/singleimagepricing' element={<SingleImagePricing />} />
+        <Route path='/uploadingimage' element={<Uploadingimage />} />
+        <Route path='/singledocument' element={<SingleDocumentPricing />} />
+        <Route path='/homepage' element={<HomePage />} />
+        <Route path='/Payment' element={<PaymentPage />} />
+        <Route path='/Privacy' element={<PrivacyPolicy />} />
+
+
       </Route>
-    <Route path='/login' element={<LoginPage />}/>
-    <Route path='/signup' element={<SignupPage />}/>
-    
+      <Route path='/login' element={<LoginPage />} />
+      <Route path='/signup' element={<SignupPage />} />
+
 
     </>
   )
 )
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </StrictMode>,
 )
