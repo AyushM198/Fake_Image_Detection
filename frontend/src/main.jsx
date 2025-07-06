@@ -19,6 +19,7 @@ import PaymentPage from './components/Payment.jsx'
 import Carousel from './components/Extra.jsx'
 import PrivacyPolicy from './components/Privacy&privacy.jsx'
 import ParallaxSections from './components/ParalaxSection.jsx'
+import ResultPage from './components/Result.jsx'
 
 
 // createRoot(document.getElementById('root')).render(
@@ -65,6 +66,7 @@ const router = createBrowserRouter(
         <Route path='/homepage' element={<HomePage />} />
         <Route path='/Payment' element={<PaymentPage />} />
         <Route path='/Privacy' element={<PrivacyPolicy />} />
+        <Route path='/Result' element={<ResultPage />} />
 
 
       </Route>
