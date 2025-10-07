@@ -1,6 +1,6 @@
 # 🛡️ Fake Image Detection
 
-![Project Logo](frontend/public/img/lu.png)  
+
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)]()
 [![Model](https://img.shields.io/badge/model-ResNet--based-orange.svg)]()
